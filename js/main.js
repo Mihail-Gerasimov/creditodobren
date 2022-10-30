@@ -29,5 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
         btnGeneral.classList.remove('detail__btn--active');
         btnMain.classList.remove('detail__main--active');
     };
+
+
+    const swiper = new Swiper('.swiper-sert', {
+        loop: true,
+        resizeObserver: false,
+        spaceBetween: 20,
+        slidesPerView: 1.6,
+
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        navigation: {
+            nextEl: '.next',
+            prevEl: '.prev',
+        },
+    });
 });
 

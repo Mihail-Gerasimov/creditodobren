@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="./css/media.min.css">
     <!-- styles -->
 
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- swiper -->
+
+
 </head>
 
 <body>
@@ -125,8 +130,40 @@
                     Деятельность
                     осуществляется на основе Генеральных лицензий на осуществление банковских операций: №1326 от
                     16.01.2015г, №963 от 5.12.2014г, №1460 от 24.10.2014г, №2534 от 18.08.2016г.</p>
-                <button class="detail__btn--close dark">Скрыть &#8593;</button>
 
+
+                <div class="detail__main--sert">
+                    <img src="./img/sert1.png" alt="">
+                    <img src="./img/sert2.png" alt="">
+                    <img src="./img/sert3.png" alt="">
+                    <img src="./img/sert4.png" alt="">
+                </div>
+
+                <div class="detail__main--swiper">
+                    <div class="swiper swiper-sert">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./img/sert1.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./img/sert2.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./img/sert3.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./img/sert4.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination detail__main--swiper-pagination"></div>
+
+                    <div class="detail__main--swiper-arrow prev"><img src="./img/arrow.svg" alt=""></div>
+                    <div class="detail__main--swiper-arrow next"><img src="./img/arrow.svg" alt=""></div>
+                </div>
+
+                <button class="detail__btn--close dark">Скрыть &#8593;</button>
             </div>
         </div>
     </section>
@@ -142,6 +179,26 @@
             </div>
         </div>
     </footer>
+
+    <div class="group bg-blue">
+        <div>
+            <a href="#sms">
+                <img src="./img/rub.svg" alt="">
+            </a>
+            <p>Получить деньги</p>
+        </div>
+        <div>
+            <a href="tel:+79999999999">
+                <img src="./img/phone.svg" alt="">
+            </a>
+            <p>Позвонить</p>
+        </div>
+    </div>
+
+
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- swiper -->
 
     <script src="./js/main.js"></script>
 </body>
