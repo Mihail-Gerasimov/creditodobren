@@ -12,8 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
             position = 100 / (max - step) * (val - step);
 
         rangeTrack.style.width = `${position}%`;
-        // rangeNum.textContent = `${val}`;
+
+
+        function fun1() {
+            var rng = document.getElementById('r1'); //rng - это ползунок
+            var i1 = document.getElementById('i1'); // i1 - input
+            i1.value = rng.value;
+        }
+
+        fun1();
+
     });
+
 
 
     const btnGeneral = document.querySelector('.detail__btn'),
@@ -46,5 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '.prev',
         },
     });
+
 });
 
