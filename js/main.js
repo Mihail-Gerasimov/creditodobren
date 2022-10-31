@@ -1,10 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // range
-    const sumInput = document.querySelector('.form__input--range');
 
-    function range(input, progress, content) {
-        const input$ = document.querySelector(input);
-        const progress$ = document.querySelector(progress);
+    // range
+    const sumInput = document.querySelector('.form__input--range'),
+        rangeInputSum = document.querySelector('.range__input'),
+        rangeTrackSum = document.querySelector('.range__track');
+
+    // const minSum = rangeInputSum.getAttribute('min');
+    // const maxSum = rangeInputSum.getAttribute('max');
+    // const stepSum = rangeInputSum.getAttribute('step');
+
+    // маска
+    function prettify(num) {
+        const n = num.toString();
+        return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ');
+    }
+
+    function range(input$, progress$, content) {
         if (input$) {
             const val = input$.value;
             const min = input$.getAttribute('min');
@@ -31,15 +42,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // маска
-    function prettify(num) {
-        var n = num.toString();
-        return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ');
-    }
+    range(rangeInputSum, rangeTrackSum, sumInput);
 
-    range('.range__input', '.range__track', sumInput);
 
-    // range
+    sumInput.addEventListener('input', function () {
+
+        const minSum = rangeInputSum.getAttribute('min');
+        const maxSum = rangeInputSum.getAttribute('max');
+        const stepSum = rangeInputSum.getAttribute('step');
+
+        this.value = prettify(this.value.replace(/\D/g, ''))
+        if (+this.value.replace(/\D/g, '') > +maxSum) {
+            this.value = prettify(maxSum)
+            return
+        }
+        if (+this.value.replace(/\D/g, '') < +minSum) {
+            rangeInputSum.value = 0
+            rangeTrackSum.style.width = 0 + '%'
+            return
+        }
+        if (+this.value.replace(/\D/g, '') >= +minSum && +this.value.replace(/\D/g, '') <= +maxSum) {
+            rangeTrackSum.style.width = `${100 / (maxSum - stepSum) * (this.value.replace(/\D/g, '') - stepSum)}%`;
+            rangeInputSum.value = this.value.replace(/\D/g, '')
+        }
+    })
 
 
     const btnGeneral = document.querySelector('.detail__btn'),
