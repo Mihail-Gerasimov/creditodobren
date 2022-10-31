@@ -1,29 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // range
+    const sumInput = document.querySelector('.form__input--range');
 
-    const rangeInput = document.querySelector(".range__input"),
-        rangeTrack = document.querySelector(".range__track"),
-        rangeNum = document.querySelector(".range-num");
+    function range(input, progress, content) {
+        const input$ = document.querySelector(input);
+        const progress$ = document.querySelector(progress);
+        if (input$) {
+            const val = input$.value;
+            const min = input$.getAttribute('min');
+            const max = input$.getAttribute('max');
+            const step = input$.getAttribute('step');
+            const position = 100 / (max - step) * (val - step);
+            updateRangePosition(progress$, position);
 
-    rangeInput.addEventListener('input', function () {
-        let val = +this.value,
-            min = +this.getAttribute('min'),
-            max = +this.getAttribute('max'),
-            step = +this.getAttribute('step'),
-            position = 100 / (max - step) * (val - step);
-
-        rangeTrack.style.width = `${position}%`;
-
-
-        function fun1() {
-            var rng = document.getElementById('r1'); //rng - это ползунок
-            var i1 = document.getElementById('i1'); // i1 - input
-            i1.value = rng.value;
+            input$.addEventListener('input', () => {
+                const val = input$.value;
+                const min = input$.getAttribute('min');
+                const max = input$.getAttribute('max');
+                const step = input$.getAttribute('step');
+                const position = 100 / (max - step) * (val - step);
+                updateRangePosition(progress$, position);
+                content.value = prettify(val);
+            });
         }
+    }
 
-        fun1();
+    function updateRangePosition(progress$, position) {
+        if (progress$) {
+            progress$.style.width = `${position}%`;
+        }
+    }
 
-    });
+    // маска
+    function prettify(num) {
+        var n = num.toString();
+        return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + ' ');
+    }
 
+    range('.range__input', '.range__track', sumInput);
+
+    // range
 
 
     const btnGeneral = document.querySelector('.detail__btn'),
